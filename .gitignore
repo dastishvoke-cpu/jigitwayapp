@@ -1,0 +1,66 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+.idea/
+.vscode/
+*.iml
+*.iws
+
+# Python
+__pycache__/
+*.pyc
+
+# Docs
+docs/
+
+# Backend
+jigitway_backend/
+
+# Built application files
+*.apk
+*.aab
+*.app
+*.app.dSYM
+*.ipa
+*.app
+*.ipa
+*.aab
+*.framework
+*.app.zip
+*.ipa.zip
+*.aab.zip
+*.xcarchive
+*.xcarchive.zip
+
+# Build directories
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+
+# Platform specific
+macos/
+ios/
+android/
+windows/
+linux/
+web/
+jigitway_app/
+jigitway_app/macos/
+jigitway_app/ios/
+jigitway_app/android/
+jigitway_app/windows/
+jigitway_app/linux/
+jigitway_app/web/
+jigitway_app/build/
+jigitway_app/.dart_tool/
+jigitway_app/.idea/
