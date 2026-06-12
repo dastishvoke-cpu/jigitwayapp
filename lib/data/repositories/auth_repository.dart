@@ -4,11 +4,9 @@ import '../../core/network/dio_client.dart';
 class AuthRepository {
   final Dio _dio = DioClient().dio;
 
-  Future<bool> login(String username, String password) async {
+  Future<bool> sendCode(String phone) async {
     try {
-      // Mock login for now, structure ready for endpoint swap
-      // final response = await _dio.post('/api/auth/login', data: {'username': username, 'password': password});
-      // return response.statusCode == 200;
+      // Mock network response
       await Future.delayed(const Duration(seconds: 1));
       return true;
     } catch (e) {
@@ -16,7 +14,20 @@ class AuthRepository {
     }
   }
 
+  Future<bool> verifyOtp(String phone, String code) async {
+    try {
+      // Mock OTP check: only accept '0000'
+      await Future.delayed(const Duration(seconds: 1));
+      if (code == '0000') {
+        return true;
+      }
+      return false;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> logout() async {
-    // Mock logout
+    await Future.delayed(const Duration(milliseconds: 500));
   }
 }

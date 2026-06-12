@@ -3,6 +3,7 @@ import '../models.dart';
 import '../localization.dart';
 import 'package:provider/provider.dart';
 import '../providers/driver_provider.dart';
+import '../providers/auth_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -660,6 +661,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       child: Text(
                         Localization.getText("reset_btn", lang).toUpperCase(),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 11,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  // Log Out Button
+                  SizedBox(
+                    width: double.infinity,
+                    height: 46,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        context.read<AuthProvider>().logout();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0x11FFFFFF),
+                        foregroundColor: Colors.white,
+                        side: const BorderSide(color: Color(0x33FFFFFF), width: 1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: Text(
+                        lang == "Қазақша" ? "ШЫҒУ" : (lang == "Русский" ? "ВЫЙТИ" : "LOG OUT"),
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 11,

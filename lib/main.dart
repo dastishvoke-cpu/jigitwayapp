@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/driver_provider.dart';
+import 'providers/auth_provider.dart';
 import 'data/repositories/driver_data_repository.dart';
 import 'data/repositories/kaspi_payout_repository.dart';
+import 'data/repositories/auth_repository.dart';
 import 'screens/home_screen.dart';
 import 'screens/ranks_screen.dart';
 import 'screens/profile_screen.dart';
+import 'screens/login_screen.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (_) => AuthProvider(
+            authRepository: AuthRepository(),
+          ),
+        ),
         ChangeNotifierProvider(
           create: (_) => DriverProvider(
             driverDataRepository: DriverDataRepository(),
@@ -46,8 +54,23 @@ class JigitWayApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const MainNavigationShell(),
+      home: const RootScreen(),
     );
+  }
+}
+
+class RootScreen extends StatelessWidget {
+  const RootScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final authProvider = context.watch<AuthProvider>();
+
+    if (authProvider.isAuthenticated) {
+      return const MainNavigationShell();
+    } else {
+      return const LoginScreen();
+    }
   }
 }
 
