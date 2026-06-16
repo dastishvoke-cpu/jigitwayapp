@@ -66,6 +66,14 @@ class RootScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final authProvider = context.watch<AuthProvider>();
 
+    if (authProvider.isCheckingAuth) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(color: Color(0xFFEAB308)),
+        ),
+      );
+    }
+
     if (authProvider.isAuthenticated) {
       return const MainNavigationShell();
     } else {
